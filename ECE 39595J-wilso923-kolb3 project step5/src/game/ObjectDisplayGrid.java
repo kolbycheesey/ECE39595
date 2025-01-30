@@ -1,6 +1,7 @@
 package game;
 
 import asciiPanel.AsciiPanel;
+import java.security.SecureRandom;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -182,7 +183,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         Monster monster = (Monster) displayableGrid[x][y].peek();
         Player player = Rouge.getPlayer();
         
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         int playerHit = rand.nextInt(player.maxHit + 1);
         if (player.weapon != null) {
             playerHit += player.weapon.v;
@@ -326,7 +327,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         popDisplayableFromDisplay(x, y);
         popObjectFromDisplay(x, y);
         
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         while (true) {
             int newX = rand.nextInt(width);
             int newY = rand.nextInt(height);
@@ -343,7 +344,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
         popDisplayableFromDisplay(x, y);
         popObjectFromDisplay(x, y);
         
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         while (true) {
             int newX = rand.nextInt(width);
             int newY = rand.nextInt(height);
@@ -607,7 +608,7 @@ public class ObjectDisplayGrid extends JFrame implements KeyListener, InputSubje
             for (int x = 0; x < width; x++) {
                 for (int y = Rouge.dungeon.topHeight; y < Rouge.dungeon.topHeight+Rouge.dungeon.gameHeight; y++) {
                     if (objectGrid[x][y].peek().getChar() != ' ') {
-                        Random rand = new Random();
+                        Random rand = new SecureRandom();
                         int ch = rand.nextInt(94);
                         ch += 33;
                         if (ch == 46 | ch == 43 | ch == 35 | ch == 64) { ch++; }
